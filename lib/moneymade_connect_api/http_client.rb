@@ -6,8 +6,9 @@ require 'net/http'
 require_relative './request_signature.rb'
 
 class HttpClient
-  def initialize(api_key, secret)
+  def initialize(api_key, secret, base_url)
     @api_key = api_key
+    @base_url = base_url
     @secret = secret
   end
 
@@ -26,6 +27,7 @@ class HttpClient
     query = params[:query]
     headers = params[:headers]
 
+    url = "#{@base_url}/#{url}"
     uri = URI(url)
     method = get_method(params[:method])
 
@@ -35,12 +37,21 @@ class HttpClient
     
     req = method.new(uri)
     req['Content-Type'] = 'application/json'
+    
+    if body
+      req.body = body.to_json()
+    end
 
     if params[:sign]
       timestamp = Time.now.to_i * 1000
 
       req['x-mm-api-key'] = @api_key
       req['x-mm-request-timestamp'] = timestamp
+
+      puts timestamp
+      puts uri
+      puts query
+      puts body
 
       req['x-mm-request-signature'] = make_request_signature({
         request_url: url,
