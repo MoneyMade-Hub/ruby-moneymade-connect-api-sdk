@@ -48,11 +48,6 @@ class HttpClient
       req['x-mm-api-key'] = @api_key
       req['x-mm-request-timestamp'] = timestamp
 
-      puts timestamp
-      puts uri
-      puts query
-      puts body
-
       req['x-mm-request-signature'] = make_request_signature({
         request_url: url,
         request_body: body,
@@ -64,7 +59,7 @@ class HttpClient
     if headers
       headers.keys.each { |header| req[header] = headers[header] }
     end
-    
+
     Net::HTTP.start(uri.hostname, :use_ssl => true) do |http|
       response = http.request req
       result_body = response.body()
