@@ -64,8 +64,8 @@ class HttpClient
     if headers
       headers.keys.each { |header| req[header] = headers[header] }
     end
-
-    Net::HTTP.start(uri.hostname) do |http|
+    
+    Net::HTTP.start(uri.hostname, :use_ssl => true) do |http|
       response = http.request req
       result_body = response.body()
       result_obj = JSON.parse(result_body)
