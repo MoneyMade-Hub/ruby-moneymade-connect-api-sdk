@@ -18,10 +18,11 @@ class UserAPI < API
     })
   end
 
-  def create_session(user_id)
+  def create_session(user_id, data)
     return @client.request({
       method: 'POST',
       url: "api/v2/users/#{user_id}/sessions",
+      body: data,
       sign: true,
     })
   end
@@ -29,6 +30,14 @@ class UserAPI < API
   def get_account(user_id, account_id)
     return @client.request({
       method: 'GET',
+      url: "api/v1/users/#{user_id}/accounts/#{account_id}",
+      sign: true,
+    })
+  end
+  
+  def remove_account(user_id, account_id)
+    return @client.request({
+      method: 'DELETE',
       url: "api/v1/users/#{user_id}/accounts/#{account_id}",
       sign: true,
     })
