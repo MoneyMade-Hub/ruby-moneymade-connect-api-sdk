@@ -25,4 +25,12 @@ class UserAPI < API
       sign: true,
     })
   end
+
+  def get_account(user_id, account_id)
+    return @client.request({
+      method: 'GET',
+      url: "api/v1/users/#{user_id}/accounts/#{account_id}",
+      sign: true,
+    })
+  end
 end
