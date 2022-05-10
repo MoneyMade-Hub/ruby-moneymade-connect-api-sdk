@@ -18,6 +18,8 @@ class HttpClient
       return Net::HTTP::Get
     when 'POST'
       return Net::HTTP::Post
+    when 'DELETE'
+      return Net::HTTP::Delete
     end
   end
 

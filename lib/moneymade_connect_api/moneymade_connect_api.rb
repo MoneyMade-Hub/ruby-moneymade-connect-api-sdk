@@ -1,6 +1,8 @@
 require_relative './http_client.rb'
 
 require_relative './apis/user.rb'
+require_relative './apis/account.rb'
+require_relative './apis/webhook.rb'
 
 class MoneyMadeConnectApi
   @@project_api_url = 'https://project-api.moneymade.io' 
@@ -20,9 +22,19 @@ class MoneyMadeConnectApi
     @client = HttpClient.new(config[:api_key], config[:secret], @account_api_url)
     
     @users = UserAPI.new @client
+    @accounts = AccountAPI.new @client
+    @webhooks = WebhookAPI.new @client
   end
 
   def users
     @users
+  end
+
+  def accounts
+    @accounts
+  end
+  
+  def webhooks
+    @webhooks
   end
 end
