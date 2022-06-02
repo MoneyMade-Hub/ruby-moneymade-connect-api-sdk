@@ -14,10 +14,10 @@ class ProviderAPI < API
     })
   end
 
-  def get_one(slug)
+  def get_one(id)
     return @client.request({
       method: 'GET',
-      url: "api/v1/providers/#{slug}",
+      url: "api/v1/providers/#{id}",
       sign: true,
     })
   end

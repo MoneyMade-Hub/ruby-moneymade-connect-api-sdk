@@ -22,7 +22,7 @@ Moneymade Connect API official Ruby SDK
 - [Provider API](#provider-api)
   - [Provider object](#provider-object)
   - [Providers retrieving](#providers-retrieving)
-  - [Provider retrieving by slug](#provider-retrieving-by-slug)
+  - [Provider retrieving by id](#provider-retrieving-by-id)
 - [Currencies API](#currencies-api)
   - [Currency object](#currency-object)
   - [Currency retrieving](#currency-retrieving)
@@ -281,9 +281,9 @@ Use following method to fetch providers.
   
 Method returns array with [provider objects](#provider-object).
 
-#### Provider retrieving by slug
+#### Provider retrieving by id
 
-Use following method to fetch provider by slug.
+Use following method to fetch provider by id.
 
 ```typescript
  $sdk.providers.get_one('coinbase')
