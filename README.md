@@ -45,7 +45,7 @@ $ gem install moneymade_connect_api
 
 ## Get started
 
-The package <b>@moneymade/connect-api</b> supports all MoneyMade-Connect-API endpoints.
+The package <b>moneymade_connect_api</b> supports all MoneyMade-Connect-API endpoints.
 SDK requires Secret key and Api key for initialisation. These keys are different for development/production environments. Make sure you use right keys per each your environment.
 
 NOTE: don't put yout keys into a code. Use env variable for the best practice.
