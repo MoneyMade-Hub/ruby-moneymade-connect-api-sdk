@@ -3,6 +3,9 @@ require_relative './http_client.rb'
 require_relative './apis/user.rb'
 require_relative './apis/account.rb'
 require_relative './apis/webhook.rb'
+require_relative './apis/provider.rb'
+require_relative './apis/currency.rb'
+require_relative './apis/transaction.rb'
 
 class MoneyMadeConnectApi
   @@project_api_url = 'https://project-api.moneymade.io' 
@@ -24,6 +27,9 @@ class MoneyMadeConnectApi
     @users = UserAPI.new @client
     @accounts = AccountAPI.new @client
     @webhooks = WebhookAPI.new @client
+    @providers = ProviderAPI.new @client
+    @currencies = CurrencyAPI.new @client
+    @transactions = TransactionAPI.new @client
   end
 
   def users
@@ -36,5 +42,17 @@ class MoneyMadeConnectApi
   
   def webhooks
     @webhooks
+  end
+ 
+  def providers
+    @providers
+  end
+ 
+  def currencies
+    @currencies
+  end
+ 
+  def transactions
+    @transactions
   end
 end
