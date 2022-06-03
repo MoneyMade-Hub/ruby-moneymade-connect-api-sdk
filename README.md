@@ -50,7 +50,7 @@ SDK requires Secret key and Api key for initialisation. These keys are different
 
 NOTE: don't put yout keys into a code. Use env variable for the best practice.
 
-```typescript
+```ruby
 require 'moneymade_connect_api';
 
 $sdk = MoneyMadeConnectApi.new({
@@ -105,7 +105,7 @@ User object contains data describes the user and connected accounts:
 Creating a new user requires client_user_id (it might be your internal user id) and optional email.
 
 
-```typescript
+```ruby
 $sdk.users.create({ client_user_id: 'you-internal-user-id' })
 ```
 
@@ -115,7 +115,7 @@ This method returns newly created [user object](#user-object).
 
 Creating a new token for user. This token is used by widget only.
 
-```typescript
+```ruby
 // you can use userId from User Object or your internal user id
 // (if internal user id was used as client_user_id on user creation)
 $sdk.users.create_session('userId')
@@ -125,7 +125,7 @@ Optionally, you can pass array of "scopes" as the second parameter
 scopes values are: "*", "accounts", "accounts:banking", "accounts:transactions", "accounts:holdings", "accounts:balances"
 
 
-```typescript
+```ruby
 // you can use userId from User Object or your internal user id
 // (if internal user id was used as client_user_id on user creation)
 $sdk.users.create_session('userId', ["accounts", "banking"])
@@ -135,7 +135,7 @@ $sdk.users.create_session('userId', ["accounts", "banking"])
 
 You should use user id from [user object](#user-object) to retrive previously created user.
 
-```typescript
+```ruby
 $sdk.users.get_one('userId')
 ```
 
@@ -174,7 +174,7 @@ Full [account object](#account-object) contains following data:
 
 [Account object](#account-object) is fetched by following method:
 
-```typescript
+```ruby
 $sdk.users.get_account(
   'userId',
   'accountId',
@@ -185,7 +185,7 @@ $sdk.users.get_account(
 
 Use `removeAccount` to remove account from user:
 
-```typescript
+```ruby
 $sdk.users.remove_account(
    'userId',
   'accountId'
@@ -213,7 +213,7 @@ Accounts bank details object:
 
 Get account's bank details
 
-```typescript
+```ruby
 $sdk.accounts.get_bank_details('some-account-id')
 ```
 
@@ -242,7 +242,7 @@ Accounts holding object:
 
 Get account's holdings
 
-```typescript
+```ruby
 $sdk.accounts.get_holdings('some-account-id')
 ```
 
@@ -272,7 +272,7 @@ Object contains following data:
 
 Use following method to fetch providers.
 
-```typescript
+```ruby
   $sdk.providers.get_list({
     limit: 25,
     offset: 0
@@ -285,7 +285,7 @@ Method returns array with [provider objects](#provider-object).
 
 Use following method to fetch provider by id.
 
-```typescript
+```ruby
  $sdk.providers.get_one('coinbase')
 ```
 Method returns [provider object](#provider-object).
@@ -307,7 +307,7 @@ Currency object describe currency and contains following data:
 
 #### Currency retrieving
 
-```typescript
+```ruby
 $sdk..currencies.get_list();
 ```
 
@@ -340,7 +340,7 @@ Transaction describes changing balance in subaccount and contains following data
 
 Transaction data is returned as pages. Look at [pagination]() for more info. 
 
-```typescript
+```ruby
 $sdk.transactions.get_list(
   'some-user-id',
   'some-account-id',
@@ -373,7 +373,7 @@ Webhook object contains following data:
 
 Webhook creation method requires "url" parameter.
 
-```typescript
+```ruby
 $sdk.webhooks.create('some url');
 ```
 
@@ -384,7 +384,7 @@ Method returns response with [webhook object](#webhook-object)
 
 Webhooks retrieving method requires no parameters.
 
-```typescript
+```ruby
 $sdk.webhooks.get_list();
 ```
 
@@ -395,7 +395,7 @@ Method returns response with array of [webhook objects](#webhook-object)
 
 Webhook retrieving method requires "id" parameter of webhook.
 
-```typescript
+```ruby
 $sdk.webhooks.get_one('some-webhook-id');
 ```
 
@@ -406,7 +406,7 @@ Method returns response with [webhook object](#webhook-object)
 
 Webhook deleting method requires "id" parameter of webhook.
 
-```typescript
+```ruby
 $sdk.webhooks.delete_webhook('some-webhook-id');
 ```
 
